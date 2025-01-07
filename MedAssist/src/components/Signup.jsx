@@ -26,9 +26,9 @@ export default function Signup () {
     }
 
     return (
-        <div className="relative flex items-center justify-center min-h-screen bg-[rgb(128,178,214)]">
-            <div className=" bg-[url('assets/signup_no_background.png')] bg-contain bg-no-repeat w-screen h-screen absolute left-5 pointer-events-none"></div>
-            <div className="bg-white p-8 rounded shadow-lg w-80">
+        <div className="relative flex items-center justify-center min-h-screen bg-[rgb(128,178,214)] overflow-x-hidden">
+            <div className=" bg-[url('assets/signup_no_background.png')] bg-contain bg-no-repeat w-screen h-screen absolute left-5 pointer-events-none z-10"></div>
+            <div className="bg-white p-8 rounded shadow-lg w-80 z-20">
                 <h2 className="text-center text-2xl font-semibold text-gray-700 mb-6">
                     Create New Account
                 </h2>
