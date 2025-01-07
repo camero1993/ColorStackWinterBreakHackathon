@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../assets/logo.png'
 
-export default function HomePage() {
+export default function LandingPage() {
   return (
     <div className="min-h-screen bg-sky-200 flex flex-col items-center justify-center">
       <img 
