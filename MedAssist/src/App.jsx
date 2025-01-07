@@ -1,9 +1,9 @@
-
+import HomePage from './components/HomePage';
 function App() {
 
   return (
     <>
-      <div>MedAssist</div>
+      <HomePage />
     </>
   )
 }
