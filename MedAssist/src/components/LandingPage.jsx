@@ -1,7 +1,15 @@
+import {useNavigate} from 'react-router-dom';
 import React from 'react'
 import logo from '../assets/logo.png'
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+  const handleGetStarted = () => {
+    navigate('/signup');
+  };
+  const handleSignIn = () => {
+    navigate('/signin');
+  };
   return (
     <div className="min-h-screen bg-sky-200 flex flex-col items-center justify-center">
       <img 
@@ -18,11 +26,11 @@ export default function LandingPage() {
         Track. Connect. Care
       </p>
 
-      <button className="bg-black text-white px-8 py-3 rounded-full mb-4 w-48 hover:bg-gray-800 font-shrikhand">
+      <button onClick={handleGetStarted} className="bg-black text-white px-8 py-3 rounded-full mb-4 w-48 hover:bg-gray-800 font-shrikhand">
         GET STARTED
       </button>
 
-      <button className="bg-black text-white px-8 py-3 rounded-full w-48 hover:bg-gray-800 font-shrikhand">
+      <button onClick={handleSignIn} className="bg-black text-white px-8 py-3 rounded-full w-48 hover:bg-gray-800 font-shrikhand">
         SIGN IN
       </button>
     </div>
