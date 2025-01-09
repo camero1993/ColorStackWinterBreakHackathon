@@ -8,18 +8,49 @@ export default function MedAssist(props) {
     const [text, setText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [showSymptoms, setShowSymptoms] = useState(false);
-    const [showCause, setShowCause] = useState(true);
+    const [showCause, setShowCause] = useState(false);
 
-    const [selected, setSelected] = useState([0,0,0]);
-    const [found, setFound] = useState([' acidity',' altered_sensorium', ' anxiety',]);
-    const [causes, setCauses] = useState(['Fungal infection','Allergy', 'GERD',]);
+    const [selected, setSelected] = useState([]);
+    const [found, setFound] = useState([]);
+    const [causes, setCauses] = useState([]);
 
-    const handleFindSymptoms = () => {
+    const handleFindSymptoms = async () => {
         setIsLoading(true);
-        setShowSymptoms(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 3000)
+        fetch('http://127.0.0.1:8000/api/symptoms', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({"symptoms": text}),
+        })
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                const cleanData = data.map(item => item.symptom.trim());
+                setFound(cleanData);
+                setSelected(Array(cleanData.length).fill(0))
+                setIsLoading(false);
+                setShowSymptoms(true);
+            })
+    }
+
+    const handleFindDiseases = async () => {
+        setIsLoading(true);
+        fetch('http://127.0.0.1:8000/api/disease', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({"symptoms": text}),
+        })
+            .then(res => res.json())
+            .then(data => {
+                setCauses(data);
+                console.log(data)
+                setShowCause(true);
+                setIsLoading(false);
+            })
     }
 
     const symptoms = found.map((s, index) => {
@@ -27,8 +58,16 @@ export default function MedAssist(props) {
     });
 
     const foundCauses = causes.map((d, index) => {
-        return <DiseaseCard key={index} />
-    })
+        return (
+            <DiseaseCard
+                key={index}
+                rank={d.rank}
+                disease={d.disease}
+                probability={d.probability}
+            />
+        );
+    });
+
 
     return (
         <div
@@ -59,6 +98,13 @@ export default function MedAssist(props) {
                     <div className="flex gap-5 mt-8">
                         {symptoms}
                     </div>
+                    <button
+                        className="px-6 py-3 mt-8 bg-blue-500 text-white font-medium rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition duration-200 disabled:bg-gray-500 disabled:text-white/80 disabled:cursor-not-allowed"
+                        onClick={handleFindDiseases}
+                        disabled={isLoading}
+                    >
+                        Find Diseases
+                    </button>
                 </div>
             }
             {
