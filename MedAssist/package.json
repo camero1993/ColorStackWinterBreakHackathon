@@ -13,6 +13,7 @@
     "firebase": "^11.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-loading": "^2.0.3",
     "react-router-dom": "^7.1.1"
   },
   "devDependencies": {
@@ -27,8 +28,8 @@
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
     "react-error-overlay": "^6.0.9",
+    "tailwindcss": "^3.4.17",
     "vite": "^6.0.5"
   }
 }
