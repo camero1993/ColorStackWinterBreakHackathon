@@ -1,10 +1,38 @@
+import { useState } from 'react';
+
 export default function DiseaseCard({ rank, disease, probability }) {
+    const [description, setDescription] = useState("");
+    const [showDescription, setShowDescription] = useState(false);
+
+    const handleClick = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/disease-info', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ "disease": disease }),
+            });
+            const data = await response.json();
+            setDescription(data.description);
+            setShowDescription(true);
+        } catch (error) {
+            console.error('Error fetching disease info:', error);
+        }
+    };
+
     return (
-        <div
-            className={`p-4 bg-white border border-gray-300 rounded-md shadow-md text-gray-800 transition duration-75 transform shadow-lg active:scale-95 focus:outline-none disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed`}
+        <div 
+            onClick={handleClick}
+            className="p-4 bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow"
         >
-            <h2 className="text-lg font-bold">#{rank}: {disease}</h2>
-            <p className="text-sm text-gray-600">Probability: {(probability * 100).toFixed(2)}%</p>
+            <h3 className="font-bold text-lg">#{rank} {disease}</h3>
+            <p className="text-gray-600">Probability: {probability}%</p>
+            {showDescription && (
+                <div className="mt-2 text-sm text-gray-700">
+                    <p>{description}</p>
+                </div>
+            )}
         </div>
     );
 }

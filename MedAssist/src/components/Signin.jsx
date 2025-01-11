@@ -19,7 +19,7 @@ export default function Signin () {
         const user = await signInUser(email, password);
         console.log(user)
         if (user) {
-            navigate("/");
+            navigate("/home");
         } else {
             setError(2);
         }
