@@ -19,7 +19,7 @@ export default function Signup () {
         };
         const user = await createUser(email, password);
         if (user) {
-            navigate("/");
+            navigate("/medassist");
         } else {
             setError(2)
         }
