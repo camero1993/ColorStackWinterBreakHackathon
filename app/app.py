@@ -28,7 +28,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-data_file = "symptom_dataset/DiseaseAndSymptoms.csv"
+data_file = "./symptom_dataset/DiseaseAndSymptoms.csv"
 
 # pre-trained SBERT model
 model = SentenceTransformer('all-MiniLM-L6-v2')
@@ -44,7 +44,7 @@ class Symptoms(BaseModel):
 def setup():
     print('creating model')
     df = pd.read_csv(
-        "symptom_dataset/DiseaseAndSymptoms.csv")
+        "./symptom_dataset/DiseaseAndSymptoms.csv")
 
     symptom_cols = ['Symptom_1', 'Symptom_2', 'Symptom_3', 'Symptom_4', 'Symptom_5', 'Symptom_6']
 
@@ -121,7 +121,7 @@ def read_root():
 @app.post("/api/disease")
 def disease(symptoms: Symptoms):
 
-    res = requests.post("http://127.0.0.1:8000/api/symptoms", json={"symptoms": symptoms.symptoms})
+    res = requests.post("https://medassist-81j6.onrender.com/api/symptoms", json={"symptoms": symptoms.symptoms})
     symptoms_json = res.json()
 
     new_model = disease_model
