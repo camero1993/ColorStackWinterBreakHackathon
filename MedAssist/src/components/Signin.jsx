@@ -104,12 +104,12 @@ export default function Signin () {
                     <div className="space-y-4">
                         <p className="text-center text-gray-600">
                             Don't have an account?{' '}
-                            <a 
-                                href="/signup" 
+                            <p
+                                onClick={() => navigate('/signup')}
                                 className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
                             >
                                 Sign up
-                            </a>
+                            </p>
                         </p>
                         <a 
                             href="#" 
