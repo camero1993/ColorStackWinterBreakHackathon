@@ -11,28 +11,38 @@ export default function LandingPage() {
     navigate('/signin');
   };
   return (
-    <div className="min-h-screen bg-sky-200 flex flex-col items-center justify-center">
-      <img 
-        src={logo} 
-        alt="MedAssist Logo" 
-        className="w-32 h-32 object-contain mb-2 font-shrikhand" 
-      />
-      
-      <h1 className="text-3xl font-bold mb-5 font-shrikhand">
-        MedAssist
-      </h1>
-      
-      <p className="text-lg mb-12 font-shrikhand">
-        Track. Connect. Care
-      </p>
+    <div className="min-h-screen bg-gradient-to-br from-sky-400 to-blue-500 flex flex-col items-center justify-center p-4">
+      <div className="animate-fade-in-down">
+        <img 
+          src={logo} 
+          alt="MedAssist Logo" 
+          className="w-40 h-40 object-contain mb-6 transform hover:scale-105 transition-transform duration-300" 
+        />
+        
+        <h1 className="text-5xl font-bold mb-4 font-shrikhand text-white text-center">
+          MedAssist
+        </h1>
+        
+        <p className="text-xl mb-12 font-shrikhand text-white/90 text-center">
+          Track. Connect. Care
+        </p>
 
-      <button onClick={handleGetStarted} className="bg-black text-white px-8 py-3 rounded-full mb-4 w-48 hover:bg-gray-800 font-shrikhand">
-        GET STARTED
-      </button>
+        <div className="space-y-4 w-64 mx-auto">
+          <button 
+            onClick={handleGetStarted} 
+            className="w-full bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transform hover:-translate-y-1 transition-all duration-200 shadow-lg"
+          >
+            Get Started
+          </button>
 
-      <button onClick={handleSignIn} className="bg-black text-white px-8 py-3 rounded-full w-48 hover:bg-gray-800 font-shrikhand">
-        SIGN IN
-      </button>
+          <button 
+            onClick={handleSignIn} 
+            className="w-full bg-transparent text-white border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transform hover:-translate-y-1 transition-all duration-200"
+          >
+            Sign In
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

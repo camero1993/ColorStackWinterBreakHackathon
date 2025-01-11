@@ -26,30 +26,28 @@ export default function Signup () {
     }
 
     return (
-        <div className="relative flex items-center justify-center min-h-screen bg-[rgb(128,178,214)] overflow-x-hidden">
-            <div className=" bg-[url('assets/signup_no_background.png')] bg-contain bg-no-repeat w-screen h-screen absolute left-5 pointer-events-none z-10"></div>
-            <div className="bg-white p-8 rounded shadow-lg w-80 z-20">
-                <h2 className="text-center text-2xl font-semibold text-gray-700 mb-6">
-                    Create New Account
+        <div className="relative min-h-screen bg-gradient-to-br from-sky-400 to-blue-500 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-[url('assets/signup_no_background.png')] bg-contain bg-no-repeat opacity-20"></div>
+            
+            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl w-full max-w-md z-20 transform hover:scale-[1.01] transition-transform duration-300">
+                <h2 className="text-center text-3xl font-bold text-gray-800 mb-8">
+                    Create Account
                 </h2>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                    <div className="mb-4">
-                        <label
-                            htmlFor="email"
-                            className="block text-sm font-medium text-gray-600"
-                        >
+                
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Email Address
                         </label>
                         <input
                             type="email"
-                            id="email"
-                            className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            placeholder="Email Address"
+                            className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            required
                         />
                     </div>
+
                     <div className="mb-6">
                         <label
                             htmlFor="password"
@@ -67,15 +65,24 @@ export default function Signup () {
                             required
                         />
                     </div>
+
+                    {error === 1 && (
+                        <p className="text-red-500 text-sm">Please fill in all fields</p>
+                    )}
+                    
                     <button
                         type="submit"
-                        className="w-full py-2 bg-indigo-500 text-white font-medium rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg"
                     >
-                        Sign Up
+                        Create Account
                     </button>
                 </form>
-                <p className="mt-6 text-sm text-center w-full">
-                    Already Have an Account? <a href="/signin">Sign in</a>
+
+                <p className="mt-8 text-center text-gray-600">
+                    Already have an account? 
+                    <a href="/signin" className="text-blue-600 hover:text-blue-700 ml-1 font-medium">
+                        Sign in
+                    </a>
                 </p>
             </div>
         </div>

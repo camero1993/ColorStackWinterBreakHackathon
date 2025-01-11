@@ -49,7 +49,7 @@ export default function MedAssist(props) {
                 setCauses(data);
                 console.log(data)
                 setShowCause(true);
-                setIsLoading(false);
+                setIsLoading(false);x
             })
     }
 
@@ -70,53 +70,50 @@ export default function MedAssist(props) {
 
 
     return (
-        <div
-            className="relative min-h-screen bg-[rgb(128,178,214)] bg-no-repeat p-8 overflow-hidden flex flex-col items-center gao-5"
-        >
-            <div className="bg-[url('assets/signup_no_background.png')] bg-contain bg-no-repeat w-screen h-screen absolute left-5 pointer-events-none z-10 overflow-hidden"></div>
-            <div
-                className="mt-5 h-1/2 w-1/2 z-20 flex flex-col items-center gap-5"
-            >
-                <textarea
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    placeholder="Explain your symptoms"
-                    className="w-full h-48 p-4 border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 resize-none"
-                />
-                <button
-                    className="px-6 py-3 bg-blue-500 text-white font-medium rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition duration-200 disabled:bg-gray-500 disabled:text-white/80 disabled:cursor-not-allowed"
-                    onClick={handleFindSymptoms}
-                    disabled={isLoading}
-                >
-                    Find Symptoms
-                </button>
-            </div>
-            {
-                showSymptoms &&
-                <div className="mt-8 flex flex-col items-center">
-                    <p className="text-lg font-semibold text-gray-700">Selected the correct symptoms</p>
-                    <div className="flex gap-5 mt-8">
-                        {symptoms}
-                    </div>
+        <div className="min-h-screen bg-gradient-to-br from-sky-400 to-blue-500 p-8">
+            <div className="max-w-4xl mx-auto flex flex-col items-center gap-8">
+                <div className="w-full bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8">
+                    <textarea
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder="Describe your symptoms in detail..."
+                        className="w-full h-48 p-6 border border-gray-200 rounded-xl shadow-inner focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700 resize-none"
+                    />
+                    
                     <button
-                        className="px-6 py-3 mt-8 bg-blue-500 text-white font-medium rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition duration-200 disabled:bg-gray-500 disabled:text-white/80 disabled:cursor-not-allowed"
-                        onClick={handleFindDiseases}
+                        className="mt-4 px-8 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-lg hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-200 disabled:opacity-50 disabled:hover:transform-none"
+                        onClick={handleFindSymptoms}
                         disabled={isLoading}
                     >
-                        Find Diseases
+                        {isLoading ? 'Analyzing...' : 'Find Symptoms'}
                     </button>
                 </div>
-            }
-            {
-                showCause &&
-                <div className="mt-8 flex flex-col items-center">
-                    <p className="text-lg font-semibold text-gray-700">Top 5 Most likely Causes:</p>
 
-                    <div className="flex gap-5 mt-8">
-                        {foundCauses}
+                {showSymptoms && (
+                    <div className="w-full bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-6">Select Your Symptoms</h3>
+                        <div className="flex flex-wrap gap-4">
+                            {symptoms}
+                        </div>
+                        <button
+                            className="px-6 py-3 mt-8 bg-blue-500 text-white font-medium rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition duration-200 disabled:bg-gray-500 disabled:text-white/80 disabled:cursor-not-allowed"
+                            onClick={handleFindDiseases}
+                            disabled={isLoading}
+                        >
+                            Find Diseases
+                        </button>
                     </div>
-                </div>
-            }
+                )}
+
+                {showCause && (
+                    <div className="w-full bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-6">Potential Causes</h3>
+                        <div className="flex flex-wrap gap-4">
+                            {foundCauses}
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

@@ -28,7 +28,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-data_file = "/Users/davidjuarez/PycharmProjects/ColorStackWinterBreakHackathon/app/symptom_dataset/DiseaseAndSymptoms.csv"
+data_file = "symptom_dataset/DiseaseAndSymptoms.csv"
 
 # pre-trained SBERT model
 model = SentenceTransformer('all-MiniLM-L6-v2')
@@ -44,7 +44,7 @@ class Symptoms(BaseModel):
 def setup():
     print('creating model')
     df = pd.read_csv(
-        "/Users/davidjuarez/PycharmProjects/ColorStackWinterBreakHackathon/app/symptom_dataset/DiseaseAndSymptoms.csv")
+        "symptom_dataset/DiseaseAndSymptoms.csv")
 
     symptom_cols = ['Symptom_1', 'Symptom_2', 'Symptom_3', 'Symptom_4', 'Symptom_5', 'Symptom_6']
 
