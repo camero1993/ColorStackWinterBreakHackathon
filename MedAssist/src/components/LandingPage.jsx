@@ -12,11 +12,11 @@ export default function LandingPage() {
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-400 to-blue-500 flex flex-col items-center justify-center p-4">
-      <div className="animate-fade-in-down">
+      <div className="animate-fade-in-down flex flex-col items-center">
         <img 
           src={logo} 
           alt="MedAssist Logo" 
-          className="w-40 h-40 object-contain mb-6 transform hover:scale-105 transition-transform duration-300" 
+          className="w-40 h-40 object-contain mb-2 drop-shadow-lg hover:scale-105 transition-transform duration-300" 
         />
         
         <h1 className="text-5xl font-bold mb-4 font-shrikhand text-white text-center">
