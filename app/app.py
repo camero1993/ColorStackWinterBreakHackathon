@@ -14,10 +14,19 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from xgboost import XGBClassifier
+from fastapi.middleware.cors import CORSMiddleware
 # !python -m spacy download en_core_web_sm  # if not already installed
 
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 data_file = "/Users/davidjuarez/PycharmProjects/ColorStackWinterBreakHackathon/app/symptom_dataset/DiseaseAndSymptoms.csv"
 
