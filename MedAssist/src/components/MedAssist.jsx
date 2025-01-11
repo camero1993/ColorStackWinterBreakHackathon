@@ -19,7 +19,7 @@ export default function MedAssist(props) {
 
     const handleFindSymptoms = async () => {
         setIsLoading(true);
-        fetch('http://127.0.0.1:8000/api/symptoms', {
+        fetch('https://medassist-backend-4ti2.onrender.com/api/symptoms', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export default function MedAssist(props) {
 
     const handleFindDiseases = async () => {
         setIsLoading(true);
-        fetch('http://127.0.0.1:8000/api/disease', {
+        fetch('https://medassist-backend-4ti2.onrender.com/api/disease', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
