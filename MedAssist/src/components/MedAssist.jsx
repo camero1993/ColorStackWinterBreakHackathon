@@ -2,8 +2,11 @@ import ReactLoading from 'react-loading';
 import { useState } from "react";
 import SymptomCard from "./SymptomCard.jsx";
 import DiseaseCard from "./DiseaseCard.jsx";
+import { useNavigate } from 'react-router-dom';
+import { IoHomeOutline } from 'react-icons/io5';
 
 export default function MedAssist(props) {
+    const navigate = useNavigate();
 
     const [text, setText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -70,7 +73,14 @@ export default function MedAssist(props) {
 
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-sky-400 to-blue-500 p-8">
+        <div className="min-h-screen bg-gradient-to-br from-sky-400 to-blue-500 p-8 relative">
+            <button 
+                onClick={() => navigate('/home')}
+                className="absolute top-6 left-6 p-3 bg-white/90 rounded-full shadow-lg hover:scale-110 transition-all duration-200 text-blue-600"
+            >
+                <IoHomeOutline size={24} />
+            </button>
+
             <div className="max-w-4xl mx-auto flex flex-col items-center gap-8">
                 <div className="w-full bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8">
                     <textarea

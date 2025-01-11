@@ -22,7 +22,7 @@ export default function Signin () {
         
         const user = await signInUser(email, password);
         if (user) {
-            navigate("/home");
+            navigate("/medassist");
         } else {
             setError(2);
         }
