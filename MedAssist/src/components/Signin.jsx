@@ -104,19 +104,13 @@ export default function Signin () {
                     <div className="space-y-4">
                         <p className="text-center text-gray-600">
                             Don't have an account?{' '}
-                            <p
+                            <button
                                 onClick={() => navigate('/signup')}
                                 className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
                             >
                                 Sign up
-                            </p>
+                            </button>
                         </p>
-                        <a 
-                            href="#" 
-                            className="block text-center text-sm text-blue-600 hover:text-blue-700 transition-colors duration-200"
-                        >
-                            Forgot your password?
-                        </a>
                     </div>
                 </form>
             </div>
